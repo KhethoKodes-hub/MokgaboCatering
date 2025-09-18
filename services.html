@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Mokgabo Enterprise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="assets/MokgaboLogo.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(243, 156, 18, 0.9)), url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb .separator {
+            margin: 0 0.5rem;
+        }
+
+        /* Services Section */
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .services-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Service Categories */
+        .service-category {
+            margin-bottom: 6rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            color: #e74c3c;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features i {
+            color: #e74c3c;
+            margin-right: 0.5rem;
+        }
+
+        /* Event Management Section */
+        .event-services {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 4rem 0;
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+        }
+
+        .event-services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-service {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .event-service:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .event-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f39c12;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(243, 156, 18, 0.9));
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #e74c3c;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo"><a><img src="assets/MokgaboLogo.png" height="80" width="80"></a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <!--<li><a href="gallery.html">Gallery</a></li>-->
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="separator">/</li>
+                <li>Services</li>
+            </ul>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="services-intro">
+            <h2>Comprehensive Business Solutions</h2>
+            <p>Mokgabo Enterprise offers a wide range of professional services designed to meet the diverse needs of businesses and institutions in our community. With a commitment to excellence and empowerment, we deliver quality results across multiple sectors.</p>
+        </section>
+
+        <section class="service-category">
+            <div class="category-header">
+                <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                <h2 class="category-title">Catering Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Event Catering">
+                    </div>
+                    <div class="service-content">
+                        <h3>Event Catering</h3>
+                        <p>Professional catering for all types of events with diverse menu options and impeccable service.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Buffets & Platters</li>
+                            <li><i class="fas fa-check"></i> Breakfast, Lunch & Dinner</li>
+                            <li><i class="fas fa-check"></i> Traditional African Food</li>
+                            <li><i class="fas fa-check"></i> Braai (Meat, Wors & Chicken)</li>
+                            <li><i class="fas fa-check"></i> Indian Cuisine & English Food</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/nutrition.png" alt="School Nutrition">
+                    </div>
+                    <div class="service-content">
+                        <h3>School Nutrition Programs</h3>
+                        <p>Providing nutritious meals to schools with a focus on health and dietary requirements.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Balanced School Lunches</li>
+                            <li><i class="fas fa-check"></i> Fruits and Vegetables Supply</li>
+                            <li><i class="fas fa-check"></i> Nutrition Planning</li>
+                            <li><i class="fas fa-check"></i> Bulk Meal Preparation</li>
+                            <li><i class="fas fa-check"></i> Dietary Requirement Accommodation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/corporate catering.png" alt="Corporate Catering">
+                    </div>
+                    <div class="service-content">
+                        <h3>Corporate Catering</h3>
+                        <p>Professional food services for businesses, offices, and corporate events.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Board Meeting Catering</li>
+                            <li><i class="fas fa-check"></i> Office Lunches</li>
+                            <li><i class="fas fa-check"></i> Conference Catering</li>
+                            <li><i class="fas fa-check"></i> Promotional Events</li>
+                            <li><i class="fas fa-check"></i> Custom Menu Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-category">
+            <div class="category-header">
+                <div class="category-icon"><i class="fas fa-broom"></i></div>
+                <h2 class="category-title">Cleaning Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/institutionalcleaning.png" alt="Institutional Cleaning">
+                    </div>
+                    <div class="service-content">
+                        <h3>Institutional Cleaning</h3>
+                        <p>Comprehensive cleaning services for various institutions and facilities.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Hospitals & Healthcare Facilities</li>
+                            <li><i class="fas fa-check"></i> Banks & Financial Institutions</li>
+                            <li><i class="fas fa-check"></i> Schools & Educational Facilities</li>
+                            <li><i class="fas fa-check"></i> Offices & Corporate Buildings</li>
+                            <li><i class="fas fa-check"></i> Hotels & Hospitality Venues</li>
+                            <li><i class="fas fa-check"></i> Stadiums & Sports Facilities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/specialcleaning.png" alt="Specialized Cleaning">
+                    </div>
+                    <div class="service-content">
+                        <h3>Specialized Cleaning</h3>
+                        <p>Targeted cleaning services for specific surfaces and materials.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Window Cleaning</li>
+                            <li><i class="fas fa-check"></i> Wall Cleaning</li>
+                            <li><i class="fas fa-check"></i> Carpet Cleaning</li>
+                            <li><i class="fas fa-check"></i> Tile & Grout Cleaning</li>
+                            <li><i class="fas fa-check"></i> Floor Polishing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/laundrycleaning.png" alt="Laundry Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Laundry & Linen Services</h3>
+                        <p>Professional laundry and fabric care services for various needs.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Commercial Laundry</li>
+                            <li><i class="fas fa-check"></i> Linen Cleaning</li>
+                            <li><i class="fas fa-check"></i> Curtain Cleaning</li>
+                            <li><i class="fas fa-check"></i> Uniform Cleaning</li>
+                            <li><i class="fas fa-check"></i> Garment Care</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-category">
+            <div class="category-header">
+                <div class="category-icon"><i class="fas fa-tools"></i></div>
+                <h2 class="category-title">Construction Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/construction.png" alt="Building Construction">
+                    </div>
+                    <div class="service-content">
+                        <h3>Building Construction</h3>
+                        <p>Complete construction services from planning to execution.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> House Construction</li>
+                            <li><i class="fas fa-check"></i> General Building</li>
+                            <li><i class="fas fa-check"></i> Renovation Projects</li>
+                            <li><i class="fas fa-check"></i> Maintenance Services</li>
+                            <li><i class="fas fa-check"></i> Skilled Workforce</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/paving.png" alt="Civil Work">
+                    </div>
+                    <div class="service-content">
+                        <h3>Civil Work & Paving</h3>
+                        <p>Infrastructure and exterior construction services.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Civil Construction</li>
+                            <li><i class="fas fa-check"></i> Paving & Hardscaping</li>
+                            <li><i class="fas fa-check"></i> Landscaping Support</li>
+                            <li><i class="fas fa-check"></i> Technology-Supported Operations</li>
+                            <li><i class="fas fa-check"></i> Quality Materials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="event-services">
+            <div class="container">
+                <h2>Event Management Services</h2>
+                <div class="event-grid">
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-utensils"></i></div>
+                        <h3>Catering</h3>
+                        <p>We arrange menus, preparation, and serving of food and beverages for all events with contractual agreements.</p>
+                    </div>
+                    
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Flower & Decor</h3>
+                        <p>Beautiful décor and flower arrangements tailored to your event's color scheme and theme.</p>
+                    </div>
+                    
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-chair"></i></div>
+                        <h3>Tent & Furniture Hire</h3>
+                        <p>Tents, gazebos, tables, and chairs for outdoor events and weather protection.</p>
+                    </div>
+                    
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-music"></i></div>
+                        <h3>Sound Hire</h3>
+                        <p>Public address systems, speakers, and music systems operated by our DJ (optional).</p>
+                    </div>
+                    
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-microphone"></i></div>
+                        <h3>Entertainment</h3>
+                        <p>Master of Ceremony, public speakers, and entertainment coordination.</p>
+                    </div>
+                    
+                    <div class="event-service">
+                        <div class="event-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>Full Event Coordination</h3>
+                        <p>Complete event organization ensuring everything runs on schedule from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Discuss Your Project?</h2>
+            <p>Contact us today to learn more about our services and how we can help meet your business needs.</p>
+            <a href="contact.html" class="cta-button">Get In Touch</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mokgabo Enterprise</h3>
+                    <p>Providing exceptional catering, cleaning, construction, and event management services since 2009.</p>
+                    <p>"Empowering Communities Through Excellence"</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 205E Madibeng Village, Kuruman, 8460</p>
+                    <p><i class="fas fa-phone"></i> 073 031 0602 / 072 514 2649</p>
+                    <p><i class="fas fa-envelope"></i> misisievacious@gmail.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mokgabo - Evacious Trading Enterprise & Catering. All rights reserved.</p>
+                <p>Company Registration: 2009/076735/23 | BBBEE Level 1 Contributor</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

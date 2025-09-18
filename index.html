@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokgabo - Evacious Trading Enterprise & Catering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/MokgaboLogo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(243, 156, 18, 0.9)),
+                        url('./assets/her02.png');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(255, 255, 255, 0.1) 50%, transparent 51%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease 0.6s both;
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-vision {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-vision::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+        }
+
+        .mission-vision h3 {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .values h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        /* References Section */
+        .references {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+
+        .references h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .reference-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .reference-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #2c3e50;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #f39c12;
+            min-width: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .bbbee-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-button {
+                margin: 0;
+            }
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo"><a><img src="assets/MokgaboLogo.png" height="80" width="80"></a></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <!--<li><a href="#values">Values</a></li>-->
+                <!--<li><a href="#references">References</a></li>-->
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="floating">Mokgabo</h1>
+                    <p class="subtitle">Evacious Trading Enterprise & Catering</p>
+                    <p class="tagline">"Empowering Communities Through Excellence"</p>
+                    <div class="cta-buttons">
+                        <a href="#services" class="cta-button">Discover Our Services</a>
+                        <a href="#contact" class="cta-button">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Specialized Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🍽️</span>
+                        <h3>Catering Services</h3>
+                        <p>Professional catering for all events with expertise in diverse cuisines and event planning.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Buffets, Platters & Full Meals</li>
+                            <li><i class="fas fa-check"></i> Traditional African Food & Braai</li>
+                            <li><i class="fas fa-check"></i> Indian Cuisine & English Food</li>
+                            <li><i class="fas fa-check"></i> School Lunch Programs</li>
+                            <li><i class="fas fa-check"></i> Event Menus & Contract Agreements</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">✨</span>
+                        <h3>Cleaning Services</h3>
+                        <p>Comprehensive cleaning solutions for various institutions and facilities.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Hospitals, Banks & Schools</li>
+                            <li><i class="fas fa-check"></i> Offices, Hotels & Stadiums</li>
+                            <li><i class="fas fa-check"></i> Windows, Walls & Carpets</li>
+                            <li><i class="fas fa-check"></i> Laundry & Linen Services</li>
+                            <li><i class="fas fa-check"></i> Floor Polishing & Gardening</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🏗️</span>
+                        <h3>Construction</h3>
+                        <p>Skilled construction services with technology-supported workforce.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Civil Work & Paving</li>
+                            <li><i class="fas fa-check"></i> General Building & House Construction</li>
+                            <li><i class="fas fa-check"></i> Renovation & Maintenance</li>
+                            <li><i class="fas fa-check"></i> Skilled Workforce</li>
+                            <li><i class="fas fa-check"></i> Technology-Supported Operations</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🎪</span>
+                        <h3>Event Management</h3>
+                        <p>Complete event planning and execution services for all occasions.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Full Catering Services</li>
+                            <li><i class="fas fa-check"></i> Flower Arrangements & Decor</li>
+                            <li><i class="fas fa-check"></i> Tent, Chair & Table Hire</li>
+                            <li><i class="fas fa-check"></i> Sound Systems & Music</li>
+                            <li><i class="fas fa-check"></i> Master of Ceremony & Entertainment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div>
+                        <h2>About Mokgabo</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                            Established in 2009, Evacious Trading Enterprise & Catering has been a cornerstone of community empowerment in the Joe Morolong Local Municipality. We are committed to delivering opportunities to the unemployed, unskilled, and historically disadvantaged while maintaining the highest standards of professional service.
+                        </p>
+                        <div class="bbbee-badge">
+                            🏆 BBBEE Level 1 - 100% Black Female Ownership
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mission-vision">
+                            <h3>Our Mission</h3>
+                            <p>To deliver constant opportunities to the unemployed, unskilled, and historically disadvantaged through fair and progressive employment practices, while generating sustainable returns and securing funding for continued growth.</p>
+                        </div>
+                        <div class="mission-vision" style="margin-top: 2rem;">
+                            <h3>Our Vision</h3>
+                            <p>To supply businesses in our area with comprehensive event & promotions catering, laundry & cleaning services, school feeding programs, and construction services with skilled workforce supported by technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="values" class="values">
+            <div class="container">
+                <h2>Our Value System</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-users"></i></div>
+                        <h3>Respect Client Rights</h3>
+                        <p>We respect the rights and confidentiality of all our clients.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-star"></i></div>
+                        <h3>Professional Service</h3>
+                        <p>We meet our clients' expectations of professional service excellence.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Integrity & Honesty</h3>
+                        <p>We operate with integrity, honesty and avoid conflicts of interest.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Non-Discriminatory</h3>
+                        <p>We operate in a non-discriminatory and non-partisan manner.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Empowerment</h3>
+                        <p>We are committed to empowering disadvantaged people.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-gem"></i></div>
+                        <h3>Add Value</h3>
+                        <p>We strive to add value to our clients' properties and operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="references" class="references">
+            <div class="container">
+                <h2>Our References</h2>
+                <div class="references-grid">
+                    <div class="reference-item">
+                        <h3>Segonyana Primary School</h3>
+                        <p>2014 - Present</p>
+                        <p>Fruits and vegetables supply</p>
+                        <p>Contact: 053 773 1356</p>
+                    </div>
+                    <div class="reference-item">
+                        <h3>Madibeng Primary School</h3>
+                        <p>2015 - 2016</p>
+                        <p>Contact: 072 452 4842 / 079 774 8376</p>
+                    </div>
+                    <div class="reference-item">
+                        <h3>Masimola Middle School</h3>
+                        <p>2016</p>
+                        <p>Contact: 072 984 9499</p>
+                    </div>
+                    <div class="reference-item">
+                        <h3>Pitso Janijie High School</h3>
+                        <p>2016</p>
+                        <p>Contact: 073 917 5797</p>
+                    </div>
+                    <div class="reference-item">
+                        <h3>Gantatelang Primary School</h3>
+                        <p>Gas supply services</p>
+                        <p>Contact: 073 686 3221</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 2rem; color: #f39c12;">Get In Touch</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Physical Address:</strong><br>
+                                205E Madibeng Village, 8460<br>
+                                1623 Bonolo Street Mogojaneng<br>
+                                Mothibistad KURUMAN, 8474<br>
+                                Joe Morolong Local Municipality
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📮</span>
+                            <div>
+                                <strong>Postal Address:</strong><br>
+                                P.O.Box 2575<br>
+                                KURUMAN, 8460
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                073 031 0602 / 072 514 2649
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📠</span>
+                            <div>
+                                <strong>Fax to email:</strong><br>
+                                086 597 1800
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email:</strong><br>
+                                misisievacious@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 2rem; color: #f39c12;">Company Details</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏢</span>
+                            <div>
+                                <strong>Registration Number:</strong><br>
+                                2009/076735/23
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📊</span>
+                            <div>
+                                <strong>Income Tax Number:</strong><br>
+                                9983978140
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">👩‍💼</span>
+                            <div>
+                                <strong>Managing Director:</strong><br>
+                                Ms. Evacious Leboko
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏆</span>
+                            <div>
+                                <strong>BBBEE Status:</strong><br>
+                                Level 1 (100% Black Female Ownership)
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📅</span>
+                            <div>
+                                <strong>Established:</strong><br>
+                                2009
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mokgabo - Evacious Trading Enterprise & Catering. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">"Responsible, Diligent & Professional in All We Do"</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .mission-vision, .value-item, .reference-item, .contact-info').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add hover effects to CTA buttons
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(45deg, #e74c3c, #f39c12)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.background = 'linear-gradient(45deg, #2c3e50, #34495e)';
+            });
+        });
+    </script>
+</body>
+</html>
